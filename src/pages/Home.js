@@ -5,7 +5,7 @@ import india from '../icons/india.png';
 import mail from '../icons/gmail.png';
 import linkedin from '../icons/linkedin.png';
 import github from '../icons/github.png';
-import '/home/cosmos/project-z/src/slider.css';
+import '../slider.css';
 import axios from 'axios';
 
 const Home = () => {
