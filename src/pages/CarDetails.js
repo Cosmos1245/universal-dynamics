@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import '/home/cosmos/project-z/src/pages/CarDetails.css';
+import './CarDetails.css';
 
 const CarDetails = () => {
   const { model } = useParams();
