@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useContext, useRef } from 'react';
 import { Link } from 'react-router-dom'; 
-import { ThemeContext } from '/home/cosmos/project-z/src/ThemeContext.js';  
+import { ThemeContext } from '../ThemeContext.js';  
 import axios from 'axios';
-import '/home/cosmos/project-z/src/pages/Collections.css';  
+import './Collections.css';  
 
 const CarCollection = () => {
     const { theme } = useContext(ThemeContext);  
