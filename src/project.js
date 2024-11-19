@@ -3,15 +3,15 @@ import React, { useContext } from 'react';
 import './index.css';
 import './App.css';
 import logo from './icons/LOGO.png';
-import Home from './pages/Home';
-import Collections from './pages/Collections';
-import EVehicles from './pages/EVehicles';
-import SportsCars from './pages/SportsCars';
-import VintageCars from './pages/VintageCars';
-import Contact from './pages/Contact';
-import { ThemeContext } from './ThemeContext'; 
-import CarDetails from './pages/CarDetails';
-import BrandCollections from './pages/BrandCollections';
+import Home from './pages/Home.js';
+import Collections from './pages/Collections.js';
+import EVehicles from './pages/EVehicles.js';
+import SportsCars from './pages/SportsCars.js';
+import VintageCars from './pages/VintageCars.js';
+import Contact from './pages/Contact.js';
+import { ThemeContext } from './ThemeContext.js'; 
+import CarDetails from './pages/CarDetails.js';
+import BrandCollections from './pages/BrandCollections.js';
 const MainLayout = () => {
 const { theme, toggleTheme } = useContext(ThemeContext); 
     return (
