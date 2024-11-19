@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ThemeContext } from '/home/cosmos/project-z/src/ThemeContext.js';
+import { ThemeContext } from '../ThemeContext.js';
 import axios from 'axios';
 
 const BrandCollections = () => {
