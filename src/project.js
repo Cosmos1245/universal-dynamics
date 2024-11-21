@@ -8,6 +8,7 @@ import Collections from './pages/Collections.js';
 import EVehicles from './pages/EVehicles.js';
 import SportsCars from './pages/SportsCars.js';
 import VintageCars from './pages/VintageCars.js';
+import Login from './Login.js';
 import Contact from './pages/Contact.js';
 import { ThemeContext } from './ThemeContext.js'; 
 import CarDetails from './pages/CarDetails.js';
@@ -53,6 +54,7 @@ const { theme, toggleTheme } = useContext(ThemeContext);
                 <main>
                     <Routes>
                         <Route path='/' element={<Home />} />
+                        <Route path='/login' element={<Login/>}/>
                         <Route path='/collections' element={<Collections />} />
                         <Route path="/EVehicles" element={<EVehicles />} />
                         <Route path='/sportscars' element={<SportsCars />} />
