@@ -41,6 +41,7 @@ const { theme, toggleTheme } = useContext(ThemeContext);
                             <li className="nav-item"><Link className="nav-link" to="/sportscars">SportsCars</Link></li>
                             <li className="nav-item"><Link className="nav-link" to="/vintage">VintageCars</Link></li>
                             <li className="nav-item"><Link className="nav-link" to="/contact">Contact Us</Link></li>
+<li> Log out</li>
                         </ul>
                     </div>
                     <div className='d-flex align-items-center'>
