@@ -1,10 +1,13 @@
-import {Component} from 'react'
+import {Component } from 'react';
+
 
 class Login extends Component {
   render(){
    return(
-     <div>
-     <h1> Hello Login</h1>
+     <div >
+      <input placeholder='username mail' type='text'/>
+      <br />
+      <input placeholder='password' type='password'/>
      </div>
    )
   }
