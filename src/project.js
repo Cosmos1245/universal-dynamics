@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
- import { BrowserRouter as Router, Route,  Link, Routes } from 'react-router-dom';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import './index.css';
 import './App.css';
 import logo from './icons/LOGO.png';
@@ -10,15 +10,33 @@ import SportsCars from './pages/SportsCars.js';
 import VintageCars from './pages/VintageCars.js';
 import Login from './Login.js';
 import Contact from './pages/Contact.js';
-import { ThemeContext } from './ThemeContext.js'; 
 import CarDetails from './pages/CarDetails.js';
 import BrandCollections from './pages/BrandCollections.js';
-const MainLayout = () => {
-const { theme, toggleTheme } = useContext(ThemeContext); 
+import Cookies from 'js-cookie';
+import { ThemeContext } from './ThemeContext.js';
+
+class MainLayout extends Component {
+  static contextType = ThemeContext; 
+
+  constructor(props) {
+    super(props);
+    this.clickLogout = this.clickLogout.bind(this);
+  }
+
+  clickLogout() {
+    const {history} = this.props
+    Cookies.remove('secKey');
+    console.log("Logged out");
+    history.replace('/login')
+  }
+
+  render() {
+    const { theme, toggleTheme } = this.context;
+
     return (
  <Router>
             <div>
-                <nav className={`navbar navbar-expand-lg ${theme === 'Dark Theme' ? 'bg-dark navbar-dark' : 'navbar-light'}`}>
+                <nav className={navbar navbar-expand-lg ${theme === 'Dark Theme' ? 'bg-dark navbar-dark' : 'navbar-light'}}>
                     <a href="/" className="nav-logo" style={{ marginRight: "1rem" }}>
                         <img className="Img" loading="lazy" src={logo} alt="Logo" style={{ width: '4rem', height: '4rem', borderRadius: "50%" }} />
                     </a>
@@ -26,7 +44,7 @@ const { theme, toggleTheme } = useContext(ThemeContext);
                     <a href="/" className="navbar-brand" style={{ position: "relative" }} id="universal-brand">Universal Dynamics</a>
 
                     <div className='d-flex align-items-center'>
-                        <button className={`btn ${theme === "Dark Theme" ? "btn-dark" : "btn-light"} d-lg-none`} onClick={toggleTheme} aria-label='Toggle Theme' style={{ position: "relative" }}>
+                        <button className={btn ${theme === "Dark Theme" ? "btn-dark" : "btn-light"} d-lg-none} onClick={toggleTheme} aria-label='Toggle Theme' style={{ position: "relative" }}>
                             <i className={theme === "Dark Theme" ? "bi bi-sun-fill" : "bi bi-moon-fill"} style={{ fontSize: "24px" }}></i>
                         </button>
                     </div>
@@ -41,12 +59,11 @@ const { theme, toggleTheme } = useContext(ThemeContext);
                             <li className="nav-item"><Link className="nav-link" to="/sportscars">SportsCars</Link></li>
                             <li className="nav-item"><Link className="nav-link" to="/vintage">VintageCars</Link></li>
                             <li className="nav-item"><Link className="nav-link" to="/contact">Contact Us</Link></li>
-<li> Log out</li>
                         </ul>
                     </div>
                     <div className='d-flex align-items-center'>
                         <div className="d-none d-lg-flex align-items-center ml-auto">
-                            <button className={`btn ${theme === "Dark Theme" ? "btn-dark" : "btn-light"}`} onClick={toggleTheme} aria-label='Toggle Theme'>
+                            <button className={btn ${theme === "Dark Theme" ? "btn-dark" : "btn-light"}} onClick={toggleTheme} aria-label='Toggle Theme'>
                                 <i className={theme === "Dark Theme" ? "bi bi-sun-fill" : "bi bi-moon-fill"} style={{ fontSize: "24px" }}></i>
                             </button>
                         </div>
@@ -69,7 +86,7 @@ const { theme, toggleTheme } = useContext(ThemeContext);
             </div>
  </Router>
     );
-};
+  }
+}
 
 export default MainLayout;
-
