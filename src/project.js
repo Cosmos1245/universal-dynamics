@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { BrowserRouter as Router, Route, Link, Routes, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import './index.css';
 import './App.css';
 import logo from './icons/LOGO.png';
@@ -16,8 +16,6 @@ import BrandCollections from './pages/BrandCollections.js';
 const MainLayout = () => {
     const { theme, toggleTheme } = useContext(ThemeContext); 
 
-    
-
     return (
         <Router>
             <div>
@@ -29,12 +27,26 @@ const MainLayout = () => {
                     <a href="/" className="navbar-brand" style={{ position: "relative" }} id="universal-brand">Universal Dynamics</a>
 
                     <div className='d-flex align-items-center'>
-                        <button className={`btn ${theme === "Dark Theme" ? "btn-dark" : "btn-light"} d-lg-none`} onClick={toggleTheme} aria-label='Toggle Theme' style={{ position: "relative" }}>
+                        <button 
+                            className={`btn ${theme === "Dark Theme" ? "btn-dark" : "btn-light"} d-lg-none`} 
+                            onClick={toggleTheme} 
+                            aria-label='Toggle Theme' 
+                            style={{ position: "relative" }}
+                        >
                             <i className={theme === "Dark Theme" ? "bi bi-sun-fill" : "bi bi-moon-fill"} style={{ fontSize: "24px" }}></i>
                         </button>
                     </div>
 
-                    <button style={{ position: "relative" }} className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                    <button 
+                        style={{ position: "relative" }} 
+                        className="navbar-toggler" 
+                        type="button" 
+                        data-toggle="collapse" 
+                        data-target="#navbarTogglerDemo01" 
+                        aria-controls="navbarTogglerDemo01" 
+                        aria-expanded="false" 
+                        aria-label="Toggle navigation"
+                    >
                         <span className="navbar-toggler-icon"> </span>
                     </button>
 
@@ -51,7 +63,11 @@ const MainLayout = () => {
 
                     <div className='d-flex align-items-center'>
                         <div className="d-none d-lg-flex align-items-center ml-auto">
-                            <button className={`btn ${theme === "Dark Theme" ? "btn-dark" : "btn-light"}`} onClick={toggleTheme} aria-label='Toggle Theme'>
+                            <button 
+                                className={`btn ${theme === "Dark Theme" ? "btn-dark" : "btn-light"}`} 
+                                onClick={toggleTheme} 
+                                aria-label='Toggle Theme'
+                            >
                                 <i className={theme === "Dark Theme" ? "bi bi-sun-fill" : "bi bi-moon-fill"} style={{ fontSize: "24px" }}></i>
                             </button>
                         </div>
