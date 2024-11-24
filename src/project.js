@@ -12,17 +12,12 @@ import Contact from './pages/Contact.js';
 import { ThemeContext } from './ThemeContext.js'; 
 import CarDetails from './pages/CarDetails.js';
 import BrandCollections from './pages/BrandCollections.js';
-import Cookies from 'js-cookie';
 
 const MainLayout = () => {
     const { theme, toggleTheme } = useContext(ThemeContext); 
     const navigate = useNavigate();
 
-    const clickLogout = () => {
-        Cookies.remove('secKey');
-        console.log("Logged out");
-        navigate('/login');
-    };
+    
 
     return (
         <Router>
@@ -60,12 +55,6 @@ const MainLayout = () => {
                             <button className={`btn ${theme === "Dark Theme" ? "btn-dark" : "btn-light"}`} onClick={toggleTheme} aria-label='Toggle Theme'>
                                 <i className={theme === "Dark Theme" ? "bi bi-sun-fill" : "bi bi-moon-fill"} style={{ fontSize: "24px" }}></i>
                             </button>
-                        </div>
-
-                        <button className={`btn ${theme === "Dark Theme" ? "btn-dark" : "btn-light"}`} onClick={clickLogout} aria-label='Logout' style={{ marginLeft: "20px" }}>
-                            Logout
-                        </button>
-                    </div>
                 </nav>
 
                 <main>
