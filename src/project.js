@@ -15,7 +15,6 @@ import BrandCollections from './pages/BrandCollections.js';
 
 const MainLayout = () => {
     const { theme, toggleTheme } = useContext(ThemeContext); 
-    const navigate = useNavigate();
 
     
 
