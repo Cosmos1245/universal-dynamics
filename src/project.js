@@ -55,6 +55,8 @@ const MainLayout = () => {
                             <button className={`btn ${theme === "Dark Theme" ? "btn-dark" : "btn-light"}`} onClick={toggleTheme} aria-label='Toggle Theme'>
                                 <i className={theme === "Dark Theme" ? "bi bi-sun-fill" : "bi bi-moon-fill"} style={{ fontSize: "24px" }}></i>
                             </button>
+                        </div>
+                    </div>
                 </nav>
 
                 <main>
