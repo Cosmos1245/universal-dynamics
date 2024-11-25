@@ -17,7 +17,7 @@ const BrandCollections = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-       const response = await axios.get('https://universal-dynamics-backend.onrender.com/cars');
+       const response = await axios.get('https://universal-dynamics-backend.onrender.com/brand');
         if (Array.isArray(response.data)) {
           setCars(response.data);
         } else {
