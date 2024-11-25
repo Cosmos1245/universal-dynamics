@@ -19,7 +19,7 @@ const CarCollection = () => {
     useEffect(() => {
         const fetchCars = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/vintage-cars/');
+                const response = await axios.get('https://universal-dynamics-backend.onrender.com/vintage-cars');
                 if (Array.isArray(response.data)) {
                     setCars(response.data);
                     setFilteredCars(response.data);  // Initially set filtered cars to all cars
