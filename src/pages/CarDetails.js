@@ -13,7 +13,7 @@ const CarDetails = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/cars/');
+        const response = await axios.get('https://universal-dynamics-backend.onrender.com/cars');
         setCars(response.data);  // Store all cars in state
       } catch (error) {
         console.error('Error fetching car list:', error);
