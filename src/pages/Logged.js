@@ -66,7 +66,7 @@ const Logged = () => {
         <button className="logout-button" onClick={() => {
           localStorage.setItem('isLoggedIn', 'false');
           localStorage.removeItem('userId');
-          navigate('/login'); // Redirect to login page after logging out
+          navigate('/login'); 
         }}>
           Log Out
         </button>
