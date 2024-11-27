@@ -10,7 +10,7 @@ const Logged = () => {
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
-        const response = await fetch('http://localhost:1245/users/');
+        const response = await fetch('https://universal-dynamics-backend.onrender.com/users/');
         const data = await response.json();
         const currentUser = data.find(user => user._id === userId);
 
