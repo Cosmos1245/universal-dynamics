@@ -1,0 +1,132 @@
+
+.signup-container {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: var(--bg-color);
+  transition: background-color 0.3s ease;
+}
+
+.signup-box {
+  background-color: var(--box-bg-color);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: var(--heading-color);
+}
+
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-group label {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--label-color);
+}
+
+.input-group input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--input-border-color);
+  border-radius: 8px;
+  background-color: var(--input-bg-color);
+  color: var(--input-text-color);
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--input-focus-border-color);
+  box-shadow: 0 0 5px var(--input-focus-border-color);
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--button-bg-color);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-submit:hover {
+  background-color: var(--button-hover-bg-color);
+  transform: scale(1.05); 
+}
+
+.login-link {
+  margin-top: 1rem;
+}
+
+.login-link a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+.light-theme {
+  --bg-color: #f0f2f5;
+  --box-bg-color: #fff;
+  --heading-color: #333;
+  --label-color: #555;
+  --input-border-color: #ccc;
+  --input-bg-color: #fff;
+  --input-text-color: #333;
+  --input-focus-border-color: #007bff;
+  --button-bg-color: #007bff;
+  --button-hover-bg-color: #0056b3;
+  --link-color: #007bff;
+}
+
+.dark-theme {
+  --bg-color: #121212;
+  --box-bg-color: #1f1f1f;
+  --heading-color: #e0e0e0;
+  --label-color: #e0e0e0;
+  --input-border-color: #555;
+  --input-bg-color: #333;
+  --input-text-color: #e0e0e0;
+  --input-focus-border-color: #1e90ff;
+  --button-bg-color: #1e90ff;
+  --button-hover-bg-color: #1c6fd0;
+  --link-color: #1e90ff;
+}
+
+@media (max-width: 768px) {
+  .signup-box {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+}
+

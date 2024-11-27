@@ -1,0 +1,169 @@
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+
+.car-collection {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.heading {
+  font-size: 32px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #333;
+  font-weight: bold;
+}
+
+
+.search-input {
+  height: 40px;
+  width: 100%;
+  max-width: 450px;
+  padding: 10px;
+  margin: 20px auto;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: block;
+  color: inherit;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+
+.search-input.light-theme {
+  background-color: #f9f9f9;
+  border-color: #ddd;
+  color: #333;
+}
+
+
+.search-input.dark-theme {
+  background-color: #333;
+  border-color: #555;
+  color: #fff;
+}
+
+.car-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.car-item {
+  background-color: #ebf2fc;
+  border-radius: 16px;
+  padding: 20px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+
+.car-item.light-theme {
+  background-color: #ebf2fc;
+  color: black;
+}
+.car-item.dark-theme {
+  background-color: #2C2C2C;
+  color: white;
+}
+
+.car-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.car-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.car-image:hover {
+  transform: scale(1.1);
+}
+
+.car-item h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: inherit;
+}
+
+.car-item p {
+  font-size: 14px;
+  margin-top: 10px;
+  color: #777;
+}
+.dark-theme .car-collection {
+  background-color: #121212;
+  color: #fff;
+}
+
+.dark-theme .heading {
+  color: #fff;
+}
+
+.dark-theme .car-item {
+  background-color: #5c5c5c;
+  color: #fff;
+}
+.light-theme .car-collection {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.light-theme .heading {
+  color: #333;
+}
+
+.light-theme .car-item {
+  background-color: #ebf2fc;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: 26px;
+  }
+
+  .search-input {
+    max-width: 100%;
+  }
+
+  .car-item {
+    width: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 22px;
+  }
+
+  .car-item {
+    width: 180px;
+  }
+
+  .search-input {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
