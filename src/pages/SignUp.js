@@ -48,7 +48,7 @@ const SignUp = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:1245/users', {
+      const response = await axios.post('https://universal-dynamics-backend.onrender.com/users', {
         name: userName,
         email,
         password,
