@@ -84,7 +84,7 @@ const SignUp = () => {
       <div className="signup-box">
         <h2>Create an Account</h2>
         <form onSubmit={handleSubmit}>
-          {/* Name */}
+      
           <div className="input-group">
             <label htmlFor="name">Name</label>
             <input
@@ -97,7 +97,7 @@ const SignUp = () => {
             />
           </div>
 
-          {/* Email */}
+          
           <div className="input-group">
             <label htmlFor="email">Email</label>
             <input
@@ -110,7 +110,6 @@ const SignUp = () => {
             />
           </div>
 
-          {/* Password */}
           <div className="input-group">
             <label htmlFor="password">Password</label>
             <input
@@ -123,7 +122,6 @@ const SignUp = () => {
             />
           </div>
 
-          {/* Confirm Password */}
           <div className="input-group">
             <label htmlFor="confirmPassword">Confirm Password</label>
             <input
@@ -136,7 +134,6 @@ const SignUp = () => {
             />
           </div>
 
-          {/* Gender */}
           <div className="input-group">
             <label htmlFor="gender">Gender</label>
             <select
@@ -153,7 +150,6 @@ const SignUp = () => {
             </select>
           </div>
 
-          {/* Phone Number */}
           <div className="input-group">
             <label htmlFor="phoneNumber">Phone Number</label>
             <input
@@ -166,7 +162,6 @@ const SignUp = () => {
             />
           </div>
 
-          {/* Address */}
           <div className="input-group">
             <label htmlFor="address">Address</label>
             <input
@@ -179,7 +174,6 @@ const SignUp = () => {
             />
           </div>
 
-          {/* Shipping Address */}
           <div className="input-group">
             <label htmlFor="shippingAddress">Shipping Address</label>
             <input
@@ -192,7 +186,6 @@ const SignUp = () => {
             />
           </div>
 
-          {/* Billing Address */}
           <div className="input-group">
             <label htmlFor="billingAddress">Billing Address</label>
             <input
