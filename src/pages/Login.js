@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useNavigate,Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { ThemeContext } from '../ThemeContext'; 
 import axios from 'axios'; 
 import './Login.css';
@@ -13,7 +13,6 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    
     if (localStorage.getItem('isLoggedIn') === 'true') {
       const userId = localStorage.getItem('userId');
       navigate(`/logged/${userId}`);
@@ -23,7 +22,6 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    
     if (username && password) {
       setLoading(true); 
       try {
@@ -94,4 +92,3 @@ const Login = () => {
 };
 
 export default Login;
-
