@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import { ThemeContext } from '../ThemeContext'; 
 import axios from 'axios'; 
 import './Login.css';
@@ -86,7 +86,7 @@ const Login = () => {
           </div>
         </form>
         <div className="signup-link">
-          <p>Don't have an account? <a href="/signup">Create one</a></p>
+          <p>Don't have an account? <Link to="/signup">Create one</Link></p>
         </div>
       </div>
     </div>
