@@ -22,6 +22,17 @@ Experience Universal Dynamics Motors live! Click the link below to explore:
 
 Universal Dynamics Motors - Live Demo: https://universal-dynamics-motors.netlify.app  
 
+📸 Gallery
+
+![Screenshot1](https://github.com/user-attachments/assets/0876a5ab-412c-48e2-91e8-2f6d779b6398)
+![Screenshot2](https://github.com/user-attachments/assets/dbc01f0b-63c9-4562-9f9f-e399718ca55c)
+![Screenshot3](https://github.com/user-attachments/assets/abf18c98-6475-4566-bf8c-24165283e380)
+![Screenshot4](https://github.com/user-attachments/assets/3c161ce5-501f-41a1-9afc-3a8c4f4ce997)
+![Screenshot5](https://github.com/user-attachments/assets/40e20b95-43f2-4b46-a8fe-e953b6d9d1b7)
+![Screenshot6](https://github.com/user-attachments/assets/169d12a0-a4c9-417a-a703-95c4d5b0823d)
+![Screenshot7](https://github.com/user-attachments/assets/48b57adb-b4b5-46f3-b83d-4d5d84541107)
+![Screenshot8](https://github.com/user-attachments/assets/79bd5e6d-3cde-431e-868d-2f54263b59e9)
+
 🛠️ Getting Started  
 
 Follow these instructions to run the project locally on your machine.  
