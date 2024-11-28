@@ -42,7 +42,7 @@ const MainLayout = () => {
         </div>
 
         <button
-          style={{ position: 'relative' }}
+          style={{ position: 'relative',width:'15vw',marginBottom:'40px' }}
           className="navbar-toggler"
           type="button"
           data-toggle="collapse"
