@@ -25,17 +25,23 @@ const Login = () => {
     if (username && password) {
       setLoading(true); 
       try {
-        const response = await axios.get('https://universal-dynamics-backend.onrender.com/users', {
-          params: { email: username, password: password },
+        const response = await axios.post('https://universal-dynamics-backend.onrender.com/login', {
+          email: username,
+          password: password,
         });
 
-        if (response.data && response.data.length > 0) {
-          const user = response.data[0]; 
+        if (response.data.success) {
+          const user = response.data.user;
+          const token = response.data.token;
+
+          // Store the token and user info in localStorage (or sessionStorage if you prefer)
           localStorage.setItem('isLoggedIn', 'true');
           localStorage.setItem('userId', user._id); 
+          localStorage.setItem('token', token); 
+
           navigate(`/logged/${user._id}`); 
         } else {
-          setError('Invalid email or password');
+          setError(response.data.message);  // Error message from backend
         }
       } catch (error) {
         console.error('Login error:', error);
