@@ -74,16 +74,6 @@ html{
 
 
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
 #ud-brand, #universal-brand {
   display: inline-block;
 }
@@ -106,5 +96,36 @@ html{
   #universal-brand {
     display: none;
   }
+  
 }
 
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .navbar-toggler {
+  order: 1;  
+  }
+
+.navbar .navbar-collapse {
+  order: 2;
+}
+
+.navbar .nav-logo, .navbar .navbar-brand {
+  margin-right: 1rem;  
+}
+
+@media (max-width: 991px) {
+  .navbar .navbar-collapse {
+    flex-basis: 100%;
+    text-align: center;
+  }
+  .navbar .navbar-toggler {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+  }
+}
