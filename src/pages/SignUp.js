@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate,Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { ThemeContext } from '../ThemeContext'; 
 import axios from 'axios'; 
 import './SignUp.css';
@@ -17,6 +17,7 @@ const SignUp = () => {
   const [billingAddress, setBillingAddress] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false); 
+  const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
 
   const phoneNumberRegex = /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/;
@@ -63,11 +64,10 @@ const SignUp = () => {
       });
 
       if (response.status === 201) {
-      
-        localStorage.setItem('isLoggedIn', 'true');
-        localStorage.setItem('userId', response.data._id); 
-
-        navigate(`/logged/${response.data._id}`);
+        setSuccess(true);
+        setTimeout(() => {
+          navigate('/login'); 
+        }, 2000);
       } else {
         setError('Something went wrong, please try again.');
       }
@@ -83,8 +83,8 @@ const SignUp = () => {
     <div className={`signup-container ${theme === 'Dark Theme' ? 'dark-theme' : 'light-theme'}`}>
       <div className="signup-box">
         <h2>Create an Account</h2>
+        {success && <p className="success-message">Account created successfully! Redirecting to login...</p>}
         <form onSubmit={handleSubmit}>
-      
           <div className="input-group">
             <label htmlFor="name">Name</label>
             <input
@@ -97,7 +97,6 @@ const SignUp = () => {
             />
           </div>
 
-          
           <div className="input-group">
             <label htmlFor="email">Email</label>
             <input
@@ -214,4 +213,3 @@ const SignUp = () => {
 };
 
 export default SignUp;
-
