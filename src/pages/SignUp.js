@@ -24,30 +24,24 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!userName || !email || !password || !confirmPassword || !gender || !phoneNumber || !address || !shippingAddress || !billingAddress) {
       setError('Please fill in all fields.');
       return;
     }
-
     if (password !== confirmPassword) {
       setError('Passwords do not match.');
       return;
     }
-
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(email)) {
       setError('Please enter a valid email.');
       return;
     }
-
     if (!phoneNumberRegex.test(phoneNumber)) {
       setError('Please enter a valid phone number.');
       return;
     }
-
     setLoading(true);
-
     try {
       const response = await axios.post('https://universal-dynamics-backend.onrender.com/users', {
         name: userName,
@@ -62,18 +56,17 @@ const SignUp = () => {
         account_status: 'active', 
         payment_method: 'credit_card', 
       });
-
       if (response.status === 201) {
         setSuccess(true);
         setTimeout(() => {
-          navigate('/login'); 
+          navigate('/login');
         }, 2000);
       } else {
         setError('Something went wrong, please try again.');
       }
     } catch (error) {
       console.error('Sign-up error:', error);
-      setError('An error occurred during sign-up.');
+      setError('An error occurred during sign-up. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -96,7 +89,6 @@ const SignUp = () => {
               required
             />
           </div>
-
           <div className="input-group">
             <label htmlFor="email">Email</label>
             <input
@@ -108,7 +100,6 @@ const SignUp = () => {
               required
             />
           </div>
-
           <div className="input-group">
             <label htmlFor="password">Password</label>
             <input
@@ -120,7 +111,6 @@ const SignUp = () => {
               required
             />
           </div>
-
           <div className="input-group">
             <label htmlFor="confirmPassword">Confirm Password</label>
             <input
@@ -132,11 +122,10 @@ const SignUp = () => {
               required
             />
           </div>
-
           <div className="input-group">
             <label htmlFor="gender">Gender</label>
             <select
-              style={{ marginLeft:'6px' }}
+              style={{ marginLeft: '6px' }}
               id="gender"
               value={gender}
               onChange={(e) => setGender(e.target.value)}
@@ -148,7 +137,6 @@ const SignUp = () => {
               <option value="Other">Other</option>
             </select>
           </div>
-
           <div className="input-group">
             <label htmlFor="phoneNumber">Phone Number</label>
             <input
@@ -160,7 +148,6 @@ const SignUp = () => {
               required
             />
           </div>
-
           <div className="input-group">
             <label htmlFor="address">Address</label>
             <input
@@ -172,7 +159,6 @@ const SignUp = () => {
               required
             />
           </div>
-
           <div className="input-group">
             <label htmlFor="shippingAddress">Shipping Address</label>
             <input
@@ -184,7 +170,6 @@ const SignUp = () => {
               required
             />
           </div>
-
           <div className="input-group">
             <label htmlFor="billingAddress">Billing Address</label>
             <input
@@ -196,7 +181,6 @@ const SignUp = () => {
               required
             />
           </div>
-
           {error && <p className="error-message">{error}</p>}
           <div className="button-group">
             <button type="submit" className="btn-submit" disabled={loading}>
