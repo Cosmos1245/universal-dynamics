@@ -1,108 +1,199 @@
-import React, { useContext } from 'react';
-import { Route, Link, Routes } from 'react-router-dom';
-import './index.css';
-import './App.css';
-import logo from './icons/LOGO.png';
-import Home from './pages/Home.js';
-import Collections from './pages/Collections.js';
-import EVehicles from './pages/EVehicles.js';
-import SportsCars from './pages/SportsCars.js';
-import VintageCars from './pages/VintageCars.js';
-import Contact from './pages/Contact.js';
-import Login from './pages/Login.js';
-import Logged from './pages/Logged.js';  
-import SignUp from './pages/SignUp.js';
-import { ThemeContext } from './ThemeContext.js';
-import CarDetails from './pages/CarDetails.js';
-import BrandCollections from './pages/BrandCollections.js';
+import React, { useState, useContext } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { ThemeContext } from '../ThemeContext'; 
+import axios from 'axios'; 
+import './SignUp.css';
 
-const MainLayout = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
-  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-  const userId = localStorage.getItem('userId'); 
+const SignUp = () => {
+  const { theme } = useContext(ThemeContext);
+  const [userName, setUserName] = useState('');  
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [gender, setGender] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [address, setAddress] = useState('');
+  const [shippingAddress, setShippingAddress] = useState('');
+  const [billingAddress, setBillingAddress] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false); 
+  const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
+
+  const phoneNumberRegex = /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!userName || !email || !password || !confirmPassword || !gender || !phoneNumber || !address || !shippingAddress || !billingAddress) {
+      setError('Please fill in all fields.');
+      return;
+    }
+    if (password !== confirmPassword) {
+      setError('Passwords do not match.');
+      return;
+    }
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      setError('Please enter a valid email.');
+      return;
+    }
+    if (!phoneNumberRegex.test(phoneNumber)) {
+      setError('Please enter a valid phone number.');
+      return;
+    }
+    setLoading(true);
+    try {
+      const response = await axios.post('https://universal-dynamics-backend.onrender.com/users', {
+        name: userName,
+        email,
+        password,
+        gender,
+        phone_number: phoneNumber,
+        address,
+        shipping_address: shippingAddress,
+        billing_address: billingAddress,
+        role: 'user',
+        account_status: 'active', 
+        payment_method: 'credit_card', 
+      });
+      if (response.status === 201) {
+        setSuccess(true);
+        setTimeout(() => {
+          navigate('/login');
+        }, 2000);
+      } else {
+        setError('Something went wrong, please try again.');
+      }
+    } catch (error) {
+      console.error('Sign-up error:', error);
+      setError('An error occurred during sign-up. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <div>
-      <nav className={`navbar navbar-expand-lg ${theme === 'Dark Theme' ? 'bg-dark navbar-dark' : 'navbar-light'}`}>
-        <a href="/" className="nav-logo" style={{ marginRight: '1rem' }}>
-          <img className="Img" loading="lazy" src={logo} alt="Logo" style={{ width: '4rem', height: '4rem', borderRadius: '50%' }} />
-        </a>
-        <a href="/" className="navbar-brand" style={{ position: 'relative' }} id="ud-brand">UD</a>
-        <a href="/" className="navbar-brand" style={{ position: 'relative' }} id="universal-brand">Universal Dynamics</a>
-
-        <div className="d-flex align-items-center">
-          <button
-            className={`btn ${theme === 'Dark Theme' ? 'btn-dark' : 'btn-light'} d-lg-none`}
-            onClick={toggleTheme}
-            aria-label="Toggle Theme"
-            style={{ position: 'relative' }}
-          >
-            <i className={theme === 'Dark Theme' ? 'bi bi-sun-fill' : 'bi bi-moon-fill'} style={{ fontSize: '24px' }}></i>
-          </button>
-        </div>
-
-        <button
-          style={{ position: 'relative',width:'15vw',marginBottom:'40px' }}
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarTogglerDemo01"
-          aria-controls="navbarTogglerDemo01"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"> </span>
-        </button>
-
-        <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <ul className="navbar-nav ml-auto mt-2 mt-lg-0" style={{ marginLeft: 'auto', padding: '12px' }}>
-            <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
-            <li className="nav-item"><Link className="nav-link" to="/collections">Collections</Link></li>
-            <li className="nav-item"><Link className="nav-link" to="/EVehicles">E-Vehicles</Link></li>
-            <li className="nav-item"><Link className="nav-link" to="/sportscars">SportsCars</Link></li>
-            <li className="nav-item"><Link className="nav-link" to="/vintage">VintageCars</Link></li>
-            <li className="nav-item"><Link className="nav-link" to="/contact">Contact Us</Link></li>
-
-            
-            {!isLoggedIn ? (
-              <li className="nav-item"><Link className="nav-link" to="/login">Login/SignUp</Link></li>
-            ) : (
-              <li className="nav-item"><Link className="nav-link" to={`/logged/${userId}`}>Logged In</Link></li>  
-            )}
-          </ul>
-        </div>
-
-        <div className="d-flex align-items-center">
-          <div className="d-none d-lg-flex align-items-center ml-auto">
-            <button
-              className={`btn ${theme === 'Dark Theme' ? 'btn-dark' : 'btn-light'}`}
-              onClick={toggleTheme}
-              aria-label="Toggle Theme"
+    <div className={`signup-container ${theme === 'Dark Theme' ? 'dark-theme' : 'light-theme'}`}>
+      <div className="signup-box">
+        <h2>Create an Account</h2>
+        {success && <p className="success-message">Account created successfully! Redirecting to login...</p>}
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              placeholder="Enter your name"
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="confirmPassword">Confirm Password</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder="Confirm your password"
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="gender">Gender</label>
+            <select
+              style={{ marginLeft: '6px' }}
+              id="gender"
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+              required
             >
-              <i className={theme === 'Dark Theme' ? 'bi bi-sun-fill' : 'bi bi-moon-fill'} style={{ fontSize: '24px' }}></i>
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div className="input-group">
+            <label htmlFor="phoneNumber">Phone Number</label>
+            <input
+              type="text"
+              id="phoneNumber"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              placeholder="Enter your phone number"
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="address">Address</label>
+            <input
+              type="text"
+              id="address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              placeholder="Enter your address"
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="shippingAddress">Shipping Address</label>
+            <input
+              type="text"
+              id="shippingAddress"
+              value={shippingAddress}
+              onChange={(e) => setShippingAddress(e.target.value)}
+              placeholder="Enter your shipping address"
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="billingAddress">Billing Address</label>
+            <input
+              type="text"
+              id="billingAddress"
+              value={billingAddress}
+              onChange={(e) => setBillingAddress(e.target.value)}
+              placeholder="Enter your billing address"
+              required
+            />
+          </div>
+          {error && <p className="error-message">{error}</p>}
+          <div className="button-group">
+            <button type="submit" className="btn-submit" disabled={loading}>
+              {loading ? <span>Loading...</span> : 'Sign Up'}
             </button>
           </div>
+        </form>
+        <div className="login-link">
+          <p>Already have an account? <Link to="/login">Login here</Link></p>
         </div>
-      </nav>
-
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/collections" element={<Collections />} />
-          <Route path="/EVehicles" element={<EVehicles />} />
-          <Route path="/sportscars" element={<SportsCars />} />
-          <Route path="/vintage" element={<VintageCars />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/logged/:userId" element={<Logged />} /> 
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/car/:model" element={<CarDetails />} />
-          <Route path="/cars/:brand" element={<BrandCollections />} />
-        </Routes>
-      </main>
+      </div>
     </div>
   );
 };
 
-export default MainLayout;
-
+export default SignUp;
