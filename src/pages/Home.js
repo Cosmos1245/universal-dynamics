@@ -118,7 +118,7 @@ const Home = () => {
                      <div className="d-flex flex-column"  style={{margin:'auto'}}>
                         <h5>Contact Us</h5> 
                         <div className="d-flex flex-row">
-                        <a  href="mailto:kishoreramesh@1245.com?subject=Compose%20Mail"  style={{padding:'10px'}}>
+                        <a  href="mailto:kishoreramesh1245@gmail.com?subject=Compose%20Mail"  style={{padding:'10px'}}>
                         <img src={mail} style={{width:'2rem' ,height:'2rem'}} alt="mail icon"/>
                         </a>
                         <a href="https://www.linkedin.com/in/kishore-r1245" target="_blank" rel="noopener noreferrer" style={{padding:'10px'}} >
