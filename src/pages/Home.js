@@ -68,7 +68,7 @@ const Home = () => {
                 <Link  to="/EVehicles">
                 <div className="car-item"  style={{margin:'12px'}}>
                  <h3>E-Vehicles</h3>
-                    <img className="car-image" src={items[1].image_url_1} alt="Evechiles images"/>    
+                    <img className="car-image" src={items[0].image_url_1} alt="Evechiles images"/>    
                 </div>
                 </Link>
                 
