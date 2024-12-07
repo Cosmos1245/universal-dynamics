@@ -40,8 +40,9 @@ const CarDetails = () => {
 
   useEffect(() => {
    
-    if (cars.length > 0) {
-      const selectedCar = cars.find((car) => car.model.toLowerCase() === model.toLowerCase());
+   
+    if (cars.length > 0  && model) {
+      const selectedCar = cars.find((car) => car.model.toLowerCase() === decodeURIComponent(model).toLowerCase());
       if (selectedCar) {
         setCar(selectedCar);
       } else {
