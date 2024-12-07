@@ -61,14 +61,14 @@ const Home = () => {
                 <Link to="/vintage">
                 <div className="car-item"  style={{margin:'12px'}}>
                  <h3>Vintage Cars</h3>
-                    <img className="car-image" src={items[23].image_url_1} alt="Vintage car images"/>    
+                    <img className="car-image" src={items[40].image_url_1} alt="Vintage car images"/>    
                 </div>
                 </Link>
                 
                 <Link  to="/EVehicles">
                 <div className="car-item"  style={{margin:'12px'}}>
                  <h3>E-Vehicles</h3>
-                    <img className="car-image" src={items[40].image_url_1} alt="Evechiles images"/>    
+                    <img className="car-image" src={items[1].image_url_1} alt="Evechiles images"/>    
                 </div>
                 </Link>
                 
